@@ -256,6 +256,123 @@ if (galleryFrames.length) {
   });
 }
 
+/* ---------- Live fair-status chip ---------- */
+const statusChip = $("#fair-status");
+if (statusChip) {
+  const now = new Date();
+  const opens = new Date(FAIR_DATA.opens);
+  const closes = new Date(FAIR_DATA.closes);
+  const etDate = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(now);
+  const etHour = parseInt(
+    new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false }).format(now),
+    10
+  );
+  const SATURDAYS = ["2026-10-31", "2026-11-07"];
+  const SUNDAYS = ["2026-11-01", "2026-11-08"];
+  let text = "";
+  if (now < opens) {
+    const days = Math.ceil((opens - now) / 86400000);
+    text = days === 1 ? "Opening day is tomorrow!" : `${days} days to opening day`;
+  } else if (now <= closes) {
+    if (SATURDAYS.includes(etDate)) {
+      text = etHour >= 10 && etHour < 22 ? "Open now · til 10 PM" : "Open today 10 AM – 10 PM";
+    } else if (SUNDAYS.includes(etDate)) {
+      text = etHour >= 12 && etHour < 21 ? "Open now · til 9 PM" : "Open today 12 – 9 PM";
+    } else {
+      text = etHour >= 15 ? "Gates are open now" : "Gates open today at 3 PM";
+    }
+  } else {
+    text = "That’s a wrap — see you in 2027";
+  }
+  statusChip.textContent = text;
+  statusChip.hidden = false;
+}
+
+/* ---------- Add-to-calendar (.ics, generated client-side) ---------- */
+const icsEscape = (s) => s.replace(/([,;\\])/g, "\\$1");
+const downloadICS = (filename, event) => {
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Coastal Carolina Fair//Site//EN",
+    "BEGIN:VEVENT",
+    `UID:${event.uid}@coastalcarolinafair`,
+    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "")}`,
+    event.start,
+    event.end,
+    `SUMMARY:${icsEscape(event.title)}`,
+    `DESCRIPTION:${icsEscape(event.description)}`,
+    `LOCATION:${icsEscape("Exchange Park, 9850 Highway 78, Ladson, SC 29456")}`,
+    "URL:https://www.coastalcarolinafair.org/",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ];
+  const blob = new Blob([lines.join("\r\n")], { type: "text/calendar" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+};
+
+$$(".ics-opening").forEach((el) =>
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    downloadICS("coastal-carolina-fair-opening-day.ics", {
+      uid: "ccf-2026-opening",
+      title: "Coastal Carolina Fair — Opening Day",
+      description: "Gates open 3 PM. Rides, fair food, and free shows with admission.",
+      start: "DTSTART:20261029T190000Z",
+      end: "DTEND:20261030T030000Z",
+    });
+  })
+);
+
+/* per-day buttons on the calendar rail */
+$$(".day-card[data-date]").forEach((card) => {
+  const iso = card.dataset.date;
+  const label = `${card.querySelector(".dow")?.textContent.trim() ?? ""} ${card.querySelector(".date")?.textContent.trim() ?? ""}`.trim();
+  const btn = document.createElement("button");
+  btn.className = "cal-btn";
+  btn.textContent = "+ Calendar";
+  btn.setAttribute("aria-label", `Add ${label} at the fair to your calendar`);
+  btn.addEventListener("click", () => {
+    const d = iso.replace(/-/g, "");
+    const next = new Date(Date.parse(iso + "T12:00:00Z") + 86400000)
+      .toISOString().slice(0, 10).replace(/-/g, "");
+    downloadICS(`coastal-carolina-fair-${iso}.ics`, {
+      uid: `ccf-2026-${iso}`,
+      title: `Coastal Carolina Fair — ${label}`,
+      description: "Fair day at Exchange Park. All shows free with admission.",
+      start: `DTSTART;VALUE=DATE:${d}`,
+      end: `DTEND;VALUE=DATE:${next}`,
+    });
+  });
+  card.append(btn);
+});
+
+/* ---------- FAQ instant filter ---------- */
+const faqSearch = $("#faq-filter");
+if (faqSearch) {
+  const sections = $$(".faq-group").map((group) => {
+    const heading = group.previousElementSibling?.tagName === "H2" ? group.previousElementSibling : null;
+    return { group, heading, items: [...group.querySelectorAll("details")] };
+  });
+  faqSearch.addEventListener("input", () => {
+    const q = faqSearch.value.trim().toLowerCase();
+    sections.forEach(({ group, heading, items }) => {
+      let visible = 0;
+      items.forEach((d) => {
+        const match = !q || d.textContent.toLowerCase().includes(q);
+        d.hidden = !match;
+        if (match) visible++;
+      });
+      group.hidden = visible === 0;
+      if (heading) heading.hidden = visible === 0;
+    });
+  });
+}
+
 /* ---------- Service worker ---------- */
 if ("serviceWorker" in navigator && location.protocol === "https:") {
   addEventListener("load", () => {

@@ -18,7 +18,9 @@
   const cv = opener.querySelector("canvas");
   const cx = cv.getContext("2d");
   const N = parseInt(opener.dataset.frames, 10) || 0;
-  const src = (i) => `assets/opener/f${String(i).padStart(3, "0")}.webp`;
+  /* small screens get the 640px frame set (~40% of the bytes) */
+  const SMALL = Math.min(screen.width, screen.height) <= 500 || innerWidth <= 700;
+  const src = (i) => `assets/opener/${SMALL ? "s/" : ""}f${String(i).padStart(3, "0")}.webp`;
   const imgs = new Array(N);
   const ready = new Array(N).fill(false);
   let target = 0;
@@ -40,7 +42,9 @@
     const s = Math.max(cw / img.width, ch / img.height);
     const w = img.width * s;
     const h = img.height * s;
-    cx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    /* portrait screens crop the 16:9 frame — bias toward the wheel (right of center) */
+    const fx = cw < ch ? 0.62 : 0.5;
+    cx.drawImage(img, (cw - w) * fx, (ch - h) / 2, w, h);
   };
 
   const size = () => {
@@ -64,11 +68,23 @@
     };
     imgs[i] = im;
   };
-  [8, 4, 2, 1].forEach((stride, pass) => {
-    setTimeout(() => {
-      for (let i = 0; i < N; i += stride) load(i);
-    }, pass * 700);
-  });
+  /* poster frame immediately; the rest waits for scroll intent (or 2.5s),
+     so a bouncing mobile visitor doesn't pay for 180 frames */
+  load(0);
+  let sequenceStarted = false;
+  const startSequence = () => {
+    if (sequenceStarted) return;
+    sequenceStarted = true;
+    [8, 4, 2, 1].forEach((stride, pass) => {
+      setTimeout(() => {
+        for (let i = 0; i < N; i += stride) load(i);
+      }, pass * 600);
+    });
+  };
+  ["scroll", "pointerdown", "touchstart", "keydown"].forEach((ev) =>
+    addEventListener(ev, startSequence, { once: true, passive: true })
+  );
+  setTimeout(startSequence, 2500);
 
   /* Pin runway scales with sequence length so rotation-per-scroll
      stays constant however many frames we splice on. */

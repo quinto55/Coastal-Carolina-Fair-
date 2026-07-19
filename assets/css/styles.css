@@ -1656,3 +1656,106 @@ h3,
 .booth td.hours-cell {
   font-weight: 700;
 }
+
+/* ==========================================================================
+   v8 — Mobile hardening, live status, calendar/FAQ utilities, closing band
+   ========================================================================== */
+
+/* live fair-status chip in the utility bar */
+.status-chip {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-radius: 999px;
+  padding: 0.1rem 0.8rem;
+  font-weight: 700;
+}
+
+/* visible breadcrumbs on interior pages */
+.crumbs {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.crumbs a { color: var(--gold-soft); text-decoration: none; }
+
+.crumbs span { color: #8d93b8; }
+
+/* FAQ instant filter */
+.faq-search {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  font: inherit;
+  padding: 0.75rem 1.1rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  margin-bottom: var(--space-3);
+}
+
+.faq-search:focus-visible { border-color: var(--red); outline: none; }
+
+/* add-to-calendar text buttons */
+.cal-btn {
+  display: inline-block;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  cursor: pointer;
+}
+
+.cal-btn:hover { text-decoration: underline; }
+
+/* slim booth variant (tickets on-sale notice) */
+.booth--slim {
+  max-width: none;
+  padding: 18px;
+  margin-block: var(--space-3);
+}
+
+.booth--slim .notice {
+  margin: 0;
+  background: #fffdf4;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* ---------- narrow-screen fixes ---------- */
+@media (max-width: 460px) {
+  .rail { grid-auto-columns: 9.4rem; }
+
+  .deal-tik .stub { flex: 0 0 5.8rem; }
+
+  .deal-tik .stub b { font-size: 1.5rem; }
+
+  .deal-tik {
+    -webkit-mask-image:
+      radial-gradient(circle 11px at 5.8rem 0, transparent 10.4px, #000 11.2px),
+      radial-gradient(circle 11px at 5.8rem 100%, transparent 10.4px, #000 11.2px);
+    mask-image:
+      radial-gradient(circle 11px at 5.8rem 0, transparent 10.4px, #000 11.2px),
+      radial-gradient(circle 11px at 5.8rem 100%, transparent 10.4px, #000 11.2px);
+  }
+
+  .deal-tik .dbody { padding: 0.9rem 1rem; }
+
+  .booth { padding: 20px; }
+
+  .booth table { font-size: var(--step--1); }
+
+  .booth th,
+  .booth td { padding: 0.55rem 0.7rem; }
+
+  .util-bar .wrap { justify-content: center; text-align: center; }
+}
