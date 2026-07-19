@@ -1958,3 +1958,39 @@ h3,
 .card[data-cat="demos"] { border-top-color: var(--gold); }
 
 .card[data-cat="community"] { border-top-color: #9aa0bd; }
+
+/* ==========================================================================
+   v9.3 — Policy cards as posted safety signage
+   ========================================================================== */
+.policy-card {
+  position: relative;
+  overflow: clip;
+  padding-top: calc(var(--space-3) + 10px);
+}
+
+/* safety-tape stripe across the top */
+.policy-stripe {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 9px;
+  background: repeating-linear-gradient(-45deg,
+    var(--gold) 0 12px, var(--navy) 12px 24px);
+}
+
+.policy-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--space-2);
+  box-shadow: 0 0 0 3px rgb(255 197 61 / 0.35);
+}
+
+.policy-icon svg {
+  width: 26px;
+  height: 26px;
+}
