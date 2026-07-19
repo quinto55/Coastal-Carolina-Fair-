@@ -1392,3 +1392,63 @@ body[data-page="home"] section {
   left: 0;
   color: var(--gold);
 }
+
+/* ==========================================================================
+   v4 — Cinematic frame-scrub opener (EMC flight-scrub pattern)
+   ========================================================================== */
+
+/* Opener only exists for motion-capable visitors; everyone else starts at
+   the illustrated sunset hero. */
+.opener { display: none; }
+
+html.js-motion .opener {
+  display: block;
+  position: relative;
+  height: 100vh;
+  overflow: clip;
+  background: var(--night);
+}
+
+#opener-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.opener-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(120% 90% at 50% 50%, transparent 55%, rgb(5 8 28 / 0.55) 100%),
+    linear-gradient(180deg, rgb(5 8 28 / 0.6) 0%, transparent 30%, transparent 62%, rgb(5 8 28 / 0.88) 100%);
+  pointer-events: none;
+}
+
+.opener-copy {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 12vh;
+  z-index: 2;
+}
+
+.opener-copy .date-lockup { margin-bottom: 0.4rem; }
+
+.opener-title {
+  font-size: var(--step-4);
+  color: var(--cream);
+  margin: 0 0 0.4rem;
+  text-shadow: 0 4px 40px rgb(5 8 28 / 0.9);
+}
+
+.opener-sub {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin: 0;
+}
+
+.opener .scroll-cue { z-index: 2; }
