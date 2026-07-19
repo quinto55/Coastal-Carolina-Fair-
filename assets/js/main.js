@@ -145,6 +145,75 @@ if (head) {
   );
 }
 
+/* ---------- Carnival booth bulbs: multicolor bulb-to-bulb chase ---------- */
+$$(".booth").forEach((booth) => {
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let bulbs = [];
+
+  const build = () => {
+    booth.querySelectorAll(".bulb").forEach((b) => b.remove());
+    bulbs = [];
+    const w = booth.clientWidth;
+    const h = booth.clientHeight;
+    const inset = 13;
+    const gap = 36;
+    const nx = Math.max(2, Math.round((w - inset * 2) / gap));
+    const ny = Math.max(2, Math.round((h - inset * 2) / gap));
+    const pts = [];
+    /* clockwise loop: top → right → bottom → left */
+    for (let i = 0; i < nx; i++) pts.push([inset + (i * (w - 2 * inset)) / nx, inset]);
+    for (let i = 0; i < ny; i++) pts.push([w - inset, inset + (i * (h - 2 * inset)) / ny]);
+    for (let i = 0; i < nx; i++) pts.push([w - inset - (i * (w - 2 * inset)) / nx, h - inset]);
+    for (let i = 0; i < ny; i++) pts.push([inset, h - inset - (i * (h - 2 * inset)) / ny]);
+    pts.forEach(([x, y]) => {
+      const b = document.createElement("span");
+      b.className = "bulb";
+      b.setAttribute("aria-hidden", "true");
+      b.style.left = x + "px";
+      b.style.top = y + "px";
+      booth.append(b);
+      bulbs.push(b);
+    });
+    if (reducedMotion) bulbs.forEach((b) => b.classList.add("lit"));
+  };
+  build();
+
+  let resizeTimer;
+  addEventListener(
+    "resize",
+    () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(build, 200);
+    },
+    { passive: true }
+  );
+
+  if (reducedMotion) return; /* all bulbs glow steady gold instead */
+
+  /* three runners spaced around the loop, hues 120° apart, drifting
+     through the spectrum as they travel bulb to bulb */
+  let idx = 0;
+  let hue = 0;
+  const RUNNERS = 3;
+  const TAIL = 2;
+  setInterval(() => {
+    const n = bulbs.length;
+    if (!n) return;
+    bulbs.forEach((b) => b.classList.remove("lit"));
+    for (let r = 0; r < RUNNERS; r++) {
+      const head = (idx + Math.round((r * n) / RUNNERS)) % n;
+      const color = (hue + r * 120) % 360;
+      for (let t = 0; t <= TAIL; t++) {
+        const b = bulbs[(head - t + n) % n];
+        b.style.setProperty("--lit", `hsl(${color} 95% ${64 - t * 9}%)`);
+        b.classList.add("lit");
+      }
+    }
+    idx = (idx + 1) % n;
+    hue = (hue + 10) % 360;
+  }, 115);
+});
+
 /* ---------- Gallery lightbox (native dialog) ---------- */
 const galleryFrames = $$(".gallery .img-frame");
 if (galleryFrames.length) {

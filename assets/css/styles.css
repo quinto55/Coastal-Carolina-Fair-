@@ -1585,40 +1585,16 @@ h3,
 }
 
 /* ==========================================================================
-   v7.3 — Gate Hours as a lit carnival booth
+   v7.4 — Gate Hours as a lit carnival booth (real bulbs, multicolor chase)
    ========================================================================== */
 .booth {
-  padding: 22px;
+  position: relative;
+  padding: 26px;
   border-radius: 18px;
   background-color: var(--navy);
   box-shadow:
     inset 0 0 0 2px rgb(255 221 133 / 0.22),
     0 14px 40px rgb(17 26 58 / 0.28);
-  /* four strings of bulbs — one per edge (soft halo baked into each dot) */
-  background-image:
-    radial-gradient(circle 3.2px at 50% 50%, #fff3cf 35%, #ffc53d 55%, rgb(255 197 61 / 0.4) 72%, transparent 80%),
-    radial-gradient(circle 3.2px at 50% 50%, #fff3cf 35%, #ffc53d 55%, rgb(255 197 61 / 0.4) 72%, transparent 80%),
-    radial-gradient(circle 3.2px at 50% 50%, #fff3cf 35%, #ffc53d 55%, rgb(255 197 61 / 0.4) 72%, transparent 80%),
-    radial-gradient(circle 3.2px at 50% 50%, #fff3cf 35%, #ffc53d 55%, rgb(255 197 61 / 0.4) 72%, transparent 80%);
-  background-size: 26px 16px, 26px 16px, 16px 26px, 16px 26px;
-  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-  background-position:
-    left 0 top 3px,
-    left 0 bottom 3px,
-    left 3px top 0,
-    right 3px top 0;
-  animation: booth-chase 1.6s linear infinite;
-}
-
-/* lights crawl clockwise around the frame */
-@keyframes booth-chase {
-  to {
-    background-position:
-      left 26px top 3px,
-      left -26px bottom 3px,
-      left 3px top -26px,
-      right 3px top 26px;
-  }
 }
 
 .booth .table-shell {
@@ -1627,6 +1603,27 @@ h3,
   box-shadow: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .booth { animation: none !important; }
+/* individual bulbs, laid around the frame by main.js */
+.booth .bulb {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  margin: -6.5px;
+  border-radius: 50%;
+  pointer-events: none;
+  /* unlit: frosted glass with a glint, dim amber filament */
+  background: radial-gradient(circle at 35% 30%,
+    #f5ecd4 0%, #f5ecd4 16%, #a8905c 42%, #63522f 100%);
+  box-shadow: inset 0 -1px 2px rgb(0 0 0 / 0.45);
+  transition: background 0.22s ease, box-shadow 0.4s ease;
+}
+
+/* lit: the traveling light — color supplied per-bulb via --lit */
+.booth .bulb.lit {
+  background: radial-gradient(circle at 35% 30%,
+    #ffffff 0%, #ffffff 26%, var(--lit, #ffd75e) 58%,
+    color-mix(in srgb, var(--lit, #ffd75e) 65%, #000) 100%);
+  box-shadow:
+    0 0 7px 2px var(--lit, #ffd75e),
+    0 0 18px 6px color-mix(in srgb, var(--lit, #ffd75e) 55%, transparent);
 }
