@@ -1231,3 +1231,134 @@ section.soft { background: rgb(255 255 255 / 0.55); }
   width: auto;
   margin-bottom: 0.9rem;
 }
+
+/* ==========================================================================
+   v7 — UX polish pass
+   ========================================================================== */
+
+/* 1. Dawn transition at the end of the opener scrub */
+.opener-dawn {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgb(125 159 230 / 0.55) 0%, rgb(255 220 168 / 0.7) 55%, rgb(255 183 94 / 0.85) 100%);
+}
+
+.opener-skip {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.3rem;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(242 237 218 / 0.75);
+  text-decoration: none;
+  border: 1px solid rgb(242 237 218 / 0.35);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+}
+
+.opener-skip:hover { color: var(--gold); border-color: var(--gold); }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* 2. Interior photo heroes */
+.page-hero--photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.page-hero--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg,
+    rgb(17 26 58 / 0.94) 0%, rgb(17 26 58 / 0.82) 50%, rgb(17 26 58 / 0.55) 100%);
+}
+
+/* 3. Type hierarchy: slab reserved for page/section titles */
+h3,
+.site-foot h2 {
+  font-family: var(--body);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* 5. Polish layer */
+.btn-ticket,
+.btn-ghost {
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    translate 0.2s ease, box-shadow 0.2s ease;
+  translate: 0 0;
+}
+
+.btn-ticket:hover {
+  translate: 0 -2px;
+  box-shadow: 0 8px 20px rgb(213 56 44 / 0.35);
+}
+
+.btn-ghost:hover { translate: 0 -2px; }
+
+.site-head .brand img { transition: height 0.25s ease; }
+
+.site-head.shrunk .brand img { height: 40px; }
+
+.site-head.shrunk .wrap { min-height: 54px; }
+
+.gallery .img-frame { cursor: zoom-in; }
+
+#lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(92vw, 1200px);
+}
+
+#lightbox::backdrop { background: rgb(5 8 28 / 0.86); }
+
+#lightbox img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+}
+
+#lightbox figcaption {
+  text-align: center;
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 0.7rem;
+}
+
+#lightbox .close {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: var(--red);
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-ticket:hover,
+  .btn-ghost:hover { translate: none; }
+}

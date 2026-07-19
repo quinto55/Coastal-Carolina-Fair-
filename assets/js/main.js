@@ -105,15 +105,20 @@ if (chipRow) {
   });
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Reveal on scroll (staggered within each grid) ---------- */
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const grid = el.parentElement;
+        const siblings = grid ? [...grid.children].filter((c) => c.classList.contains("reveal")) : [el];
+        const delay = Math.max(0, siblings.indexOf(el)) * 70;
+        el.style.transitionDelay = `${delay}ms`;
+        el.classList.add("in");
+        setTimeout(() => (el.style.transitionDelay = ""), delay + 700);
+        io.unobserve(el);
       });
     },
     { threshold: 0.12 }
@@ -121,6 +126,65 @@ if ("IntersectionObserver" in window) {
   $$(".reveal").forEach((el) => io.observe(el));
 } else {
   $$(".reveal").forEach((el) => el.classList.add("in"));
+}
+
+/* ---------- Compacting header ---------- */
+const head = $(".site-head");
+if (head) {
+  let compact = false;
+  addEventListener(
+    "scroll",
+    () => {
+      const want = scrollY > 90;
+      if (want !== compact) {
+        compact = want;
+        head.classList.toggle("shrunk", want);
+      }
+    },
+    { passive: true }
+  );
+}
+
+/* ---------- Gallery lightbox (native dialog) ---------- */
+const galleryFrames = $$(".gallery .img-frame");
+if (galleryFrames.length) {
+  const dialog = document.createElement("dialog");
+  dialog.id = "lightbox";
+  dialog.innerHTML =
+    '<figure style="margin:0;position:relative">' +
+    '<button class="close" aria-label="Close image">×</button>' +
+    "<img alt><figcaption></figcaption></figure>";
+  document.body.append(dialog);
+  const dImg = dialog.querySelector("img");
+  const dCap = dialog.querySelector("figcaption");
+
+  const open = (frame) => {
+    const img = frame.querySelector("img");
+    const cap = frame.querySelector("figcaption");
+    dImg.src = img.src.replace(/w=\d+/, "w=1400");
+    dImg.alt = img.alt;
+    dCap.textContent = cap ? cap.textContent : "";
+    dialog.showModal();
+  };
+
+  galleryFrames.forEach((frame) => {
+    frame.setAttribute("tabindex", "0");
+    frame.setAttribute("role", "button");
+    const cap = frame.querySelector("figcaption");
+    frame.setAttribute("aria-label", "Enlarge photo" + (cap ? ": " + cap.textContent : ""));
+    frame.addEventListener("click", () => open(frame));
+    frame.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        open(frame);
+      }
+    });
+  });
+
+  dialog.querySelector(".close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
 }
 
 /* ---------- Service worker ---------- */

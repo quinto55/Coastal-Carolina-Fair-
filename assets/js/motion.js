@@ -93,6 +93,14 @@
     scrollTrigger: { trigger: opener, start: "top top", end: "+=" + runway, scrub: true },
   });
 
+  /* Dawn: the last stretch of the scrub warms the footage so night hands
+     off to the daytime sky instead of jump-cutting. */
+  const dawn = gsap.timeline({
+    scrollTrigger: { trigger: opener, start: "top top", end: "+=" + runway, scrub: true },
+  });
+  dawn.to({}, { duration: 0.78 });
+  dawn.to(".opener-dawn", { autoAlpha: 0.9, duration: 0.22, ease: "power1.in" });
+
   gsap.to(".opener .scroll-cue", {
     autoAlpha: 0,
     scrollTrigger: { trigger: opener, start: "top top", end: "+=25%", scrub: true },

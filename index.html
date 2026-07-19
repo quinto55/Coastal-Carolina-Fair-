@@ -108,6 +108,8 @@
   <!-- ============ Cinematic opener (motion-capable visitors only) ============ -->
   <section class="opener" data-frames="180" aria-label="The giant wheel turning at night">
     <canvas id="opener-canvas" aria-hidden="true"></canvas>
+    <div class="opener-dawn" aria-hidden="true"></div>
+    <a class="opener-skip" href="#after-opener">Skip intro ↓</a>
     <div class="opener-shade" aria-hidden="true"></div>
     <div class="opener-copy wrap">
       <img class="opener-logo" src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=logo(2).png&amp;w=240" alt="" width="240" height="246">
@@ -119,7 +121,7 @@
   </section>
 
   <!-- ============ Info strip ============ -->
-  <div class="info-strip">
+  <div class="info-strip" id="after-opener">
     <div class="wrap">
       <p class="item" style="margin:0"><b>Oct 29 – Nov 8, 2026</b><span>Eleven days, every fall</span></p>
       <p class="item" style="margin:0"><b>Exchange Park, Ladson</b><span>9850 Highway 78, right off I-26</span></p>
@@ -146,7 +148,7 @@
         </div>
       </div>
       <div class="img-frame">
-        <img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=giant_wheel(1).jpg&amp;cb=4D777D92&amp;w=900" alt="The giant wheel lit up at the Coastal Carolina Fair" loading="lazy" decoding="async" width="900" height="600">
+        <img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=IMG_7905(1).JPG&amp;cb=36F818F7&amp;w=900" alt="Hand-painted sign welcoming visitors to the Coastal Carolina Fair" loading="lazy" decoding="async" width="900" height="600">
       </div>
     </div>
   </section>
@@ -195,26 +197,10 @@
       <p class="eyebrow">What’s waiting inside the gates</p>
       <h2 id="high-title">Built for a full day of fun</h2>
       <ul class="card-grid">
-        <li class="card reveal">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="11" r="7"/><path d="M12 4v14M5 11h14M7 6.5l10 9M17 6.5l-10 9"/></svg>
-          <h3>Rides &amp; midway</h3>
-          <p>A full midway of rides and games for every age and every level of bravery, from kiddie coasters to the big spinners.</p>
-        </li>
-        <li class="card reveal">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 21c3-6 1-9-1-11 5 0 7 3 7 7 0 0 4-2 3-7 3 3 4 7 2 10-1.7 2.4-7.3 3.4-11 1z"/></svg>
-          <h3>Fair food</h3>
-          <p>Funnel cakes, corn dogs, cotton candy, and the once-a-year favorites you plan the whole visit around.</p>
-        </li>
-        <li class="card reveal">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
-          <h3>Free shows &amp; music</h3>
-          <p>Every show is free with gate admission — headline acts, strolling performers, and the Parkway Stage.</p>
-        </li>
-        <li class="card reveal">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l2.5 5.1 5.5.8-4 3.9.9 5.6-4.9-2.6-4.9 2.6.9-5.6-4-3.9 5.5-.8z"/></svg>
-          <h3>Competitions &amp; exhibits</h3>
-          <p>Livestock, crafts, baking, and live demonstrations — the classic fair traditions, judged and on display all week.</p>
-        </li>
+        <li class="card photo-card reveal"><div class="img-frame"><img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=giant_wheel(1).jpg&amp;cb=4D777D92&amp;w=640" alt="The giant wheel lit against the evening sky" loading="lazy" decoding="async" width="640" height="427"></div><div class="body"><h3>Rides &amp; midway</h3><p>A full midway of rides and games for every age and every level of bravery — kiddie coasters to the big spinners.</p></div></li>
+        <li class="card photo-card reveal"><div class="img-frame"><img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=IMG_8006.JPG&amp;cb=28335950&amp;w=640" alt="Cotton candy and caramel apple stands on the midway" loading="lazy" decoding="async" width="640" height="427"></div><div class="body"><h3>Fair food</h3><p>Cotton candy, caramel apples, funnel cakes — the once-a-year favorites you plan the whole visit around.</p></div></li>
+        <li class="card photo-card reveal"><div class="img-frame"><img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=lakefront_stage_center.jpg&amp;cb=C16630A0&amp;w=640" alt="The Lakefront Stage amphitheater" loading="lazy" decoding="async" width="640" height="427"></div><div class="body"><h3>Free shows &amp; music</h3><p>Every show is free with gate admission — headliners on the Lakefront Stage, daily acts on the Parkway.</p></div></li>
+        <li class="card photo-card reveal"><div class="img-frame"><img src="https://cdn.saffire.com/images.ashx?t=ig&amp;rid=CoastalCarolinaFair&amp;i=Butterflies_2017_CCF.JPG&amp;cb=E3B1BD1A&amp;w=640" alt="Butterfly exhibit at the fair" loading="lazy" decoding="async" width="640" height="427"></div><div class="body"><h3>Competitions &amp; exhibits</h3><p>Livestock, crafts, baking, art, and live demonstrations — classic fair traditions, judged and on display.</p></div></li>
       </ul>
     </div>
   </section>
@@ -267,11 +253,16 @@
 
   <!-- ============ History teaser ============ -->
   <section aria-labelledby="hist-title">
-    <div class="wrap">
-      <p class="eyebrow">Since 1957</p>
-      <h2 id="hist-title">A Lowcountry tradition, seven decades strong</h2>
-      <p class="lede">From Charleston fairgrounds in the 1920s to 180+ acres at Exchange Park in Ladson, the fair has moved, grown, and survived a fire — and never lost the plot: raise money, give it away, have a great time doing it.</p>
-      <p><a href="exchange-park.html">Read the fair’s story →</a></p>
+    <div class="wrap welcome-grid">
+      <div>
+        <p class="eyebrow">Since 1957</p>
+        <h2 id="hist-title">A Lowcountry tradition, seven decades strong</h2>
+        <p class="lede">From Charleston fairgrounds in the 1920s to 180+ acres at Exchange Park in Ladson, the fair has moved, grown, and survived a fire — and never lost the plot: raise money, give it away, have a great time doing it.</p>
+        <p><a href="exchange-park.html">Read the fair’s story →</a></p>
+      </div>
+      <div class="img-frame">
+        <img src="assets/img/midway-golden-hour.jpg" alt="Golden hour over the midway, the wheel rising in the distance" loading="lazy" decoding="async" width="1376" height="768">
+      </div>
     </div>
   </section>
 
