@@ -1362,3 +1362,90 @@ h3,
   .btn-ticket:hover,
   .btn-ghost:hover { translate: none; }
 }
+
+/* ==========================================================================
+   v7.1 — Calendar day cards as admission tickets
+   ========================================================================== */
+.day-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 13.5rem;
+  background:
+    linear-gradient(180deg, #fffdf4 0%, var(--cream) 100%);
+  border: 1px solid #e3dabc;
+  border-top: 5px solid var(--navy);
+  padding-bottom: 1.1rem;
+  /* punched side notches at the tear line */
+  -webkit-mask-image:
+    radial-gradient(circle 9px at 0 6.05rem, transparent 8.6px, #000 9.2px),
+    radial-gradient(circle 9px at 100% 6.05rem, transparent 8.6px, #000 9.2px);
+  -webkit-mask-size: 51% 100%;
+  -webkit-mask-position: left, right;
+  -webkit-mask-repeat: no-repeat;
+  mask-image:
+    radial-gradient(circle 9px at 0 6.05rem, transparent 8.6px, #000 9.2px),
+    radial-gradient(circle 9px at 100% 6.05rem, transparent 8.6px, #000 9.2px);
+  mask-size: 51% 100%;
+  mask-position: left, right;
+  mask-repeat: no-repeat;
+  transition: translate 0.25s ease, rotate 0.25s ease, box-shadow 0.25s ease;
+}
+
+.day-card:hover {
+  translate: 0 -5px;
+  rotate: -1.2deg;
+  box-shadow: 0 14px 30px rgb(17 26 58 / 0.18);
+}
+
+/* perforated tear line, aligned with the notches */
+.day-card::before {
+  content: "";
+  position: absolute;
+  top: 6.05rem;
+  left: 14px;
+  right: 14px;
+  border-top: 2px dashed rgb(17 26 58 / 0.28);
+}
+
+/* ticket fine print up the right edge */
+.day-card::after {
+  content: "ADMIT ONE ★ CCF 2026";
+  position: absolute;
+  top: 50%;
+  right: 0.42rem;
+  translate: 0 -50%;
+  writing-mode: vertical-rl;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgb(17 26 58 / 0.32);
+  pointer-events: none;
+}
+
+.day-card .dow { color: var(--red); font-weight: 700; }
+
+.day-card .date { margin-bottom: 0; }
+
+/* fine-print block sits below the tear */
+.day-card .hours {
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.day-card.is-weekend { border-top-color: var(--red); }
+
+.day-card.is-weekend .dow { color: var(--navy); }
+
+.day-card.is-today {
+  border-color: var(--gold);
+  border-top-color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .day-card:hover {
+    translate: none;
+    rotate: none;
+  }
+}
