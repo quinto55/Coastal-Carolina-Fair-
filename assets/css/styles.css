@@ -2063,3 +2063,15 @@ h3,
 .tier--white .tier-price { color: var(--muted); }
 
 .tier--patriot .tier-price { color: var(--navy); }
+
+/* ==========================================================================
+   v9.5 — "Short list" headings stay on one line, tops aligned
+   ========================================================================== */
+#bag-title ~ .stat-row .stat {
+  container-type: inline-size;
+}
+
+#bag-title ~ .stat-row .stat b {
+  white-space: nowrap;
+  font-size: clamp(1.3rem, 12cqw, 2.6rem);
+}
