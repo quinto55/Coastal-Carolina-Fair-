@@ -2085,3 +2085,55 @@ h3,
   width: auto;
   margin-bottom: 0.5rem;
 }
+
+/* ==========================================================================
+   v10 — Cookie consent banner
+   ========================================================================== */
+.cookie-banner {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  z-index: 90;
+  max-width: 42rem;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid rgb(255 221 133 / 0.35);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px rgb(3 5 16 / 0.5);
+}
+
+.cookie-banner p {
+  margin: 0;
+  flex: 1 1 18rem;
+  font-size: var(--step--1);
+}
+
+.cookie-banner a { color: var(--gold); }
+
+.cookie-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.cookie-actions .btn-ghost {
+  color: var(--cream);
+  border-color: rgb(250 244 230 / 0.6);
+  padding: 0.5rem 1.1rem;
+  font-size: var(--step--1);
+}
+
+.cookie-actions .btn-ghost:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.cookie-actions .btn-ticket {
+  padding: 0.5rem 1.2rem;
+  font-size: var(--step--1);
+}

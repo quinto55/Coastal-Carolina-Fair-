@@ -52,6 +52,21 @@ Push to `main`, then GitHub → Settings → Pages → deploy from branch (`main
 Canonical URLs assume `https://quinto55.github.io/Coastal-Carolina-Fair-/`; update
 them (and `sitemap.xml`/`robots.txt`) if a custom domain is added.
 
+## Analytics & cookie consent
+
+`assets/js/consent.js` ships a consent-gated analytics scaffold that is **inert
+by default**: the GA4 and Meta Pixel IDs in its `CONFIG` block are empty, so no
+banner appears, no cookies are set, and nothing loads — the footer's
+"no tracking without your consent" claim holds literally.
+
+To activate on launch: fill in `ga4Id` / `metaPixelId` and confirm
+`prodHostnames` matches the live domain. The consent banner then appears on
+first visit; vendors load only after "Accept," only on the production
+hostname. The stored choice can be revisited via the footer "Cookie
+preferences" link. The condensed vendor loaders are not the vendor-verbatim
+snippets — verify against Google's and Meta's current tags on a staging host
+before real launch. `privacy.html` documents the whole model for visitors.
+
 ## Font license
 
 "Alfa Slab One" (JM Solé) is self-hosted under the SIL Open Font License 1.1.
