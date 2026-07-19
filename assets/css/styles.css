@@ -1627,3 +1627,31 @@ h3,
     0 0 7px 2px var(--lit, #ffd75e),
     0 0 18px 6px color-mix(in srgb, var(--lit, #ffd75e) 55%, transparent);
 }
+
+/* ==========================================================================
+   v7.5 — Tighter gate-hours booth: narrower frame, bigger type
+   ========================================================================== */
+.booth {
+  max-width: 50rem;
+}
+
+.booth table {
+  font-size: var(--step-0);
+}
+
+.booth caption {
+  font-size: var(--step-1);
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.booth th,
+.booth td {
+  padding: 0.8rem 1.1rem;
+}
+
+.booth td.num,
+.booth td.hours-cell {
+  font-weight: 700;
+}
