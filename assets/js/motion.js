@@ -91,10 +91,14 @@
           }, pass * 700);
         });
 
+        /* Pin runway scales with the sequence length so the wheel's
+           scroll-speed feels the same however many frames we have. */
+        const runway = Math.round((N / 90) * 170) + "%";
+
         ScrollTrigger.create({
           trigger: opener,
           start: "top top",
-          end: "+=170%",
+          end: "+=" + runway,
           pin: true,
           scrub: 0.4,
           onUpdate(self) {
@@ -107,7 +111,7 @@
           autoAlpha: 0.25,
           y: -30,
           ease: "none",
-          scrollTrigger: { trigger: opener, start: "top top", end: "+=170%", scrub: true },
+          scrollTrigger: { trigger: opener, start: "top top", end: "+=" + runway, scrub: true },
         });
         gsap.to(".opener .scroll-cue", {
           autoAlpha: 0,
