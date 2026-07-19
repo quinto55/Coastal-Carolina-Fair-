@@ -1,4 +1,4 @@
+# Demo concept for the Coastal Carolina Fair — not the official site.
+# Remove this block (and the per-page noindex meta) at real launch.
 User-agent: *
-Allow: /
-
-Sitemap: https://quinto55.github.io/Coastal-Carolina-Fair-/sitemap.xml
+Disallow: /
