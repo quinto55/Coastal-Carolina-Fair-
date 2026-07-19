@@ -1994,3 +1994,72 @@ h3,
   width: 26px;
   height: 26px;
 }
+
+/* ==========================================================================
+   v9.4 — Icon medallions for every remaining plain card
+   ========================================================================== */
+.icon-chip,
+.num-chip {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.icon-chip svg { width: 26px; height: 26px; }
+
+.icon-chip--navy {
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: 0 0 0 3px rgb(255 197 61 / 0.35);
+}
+
+.icon-chip--red {
+  background: var(--red);
+  color: var(--cream);
+  box-shadow: 0 0 0 3px rgb(213 56 44 / 0.25);
+}
+
+.icon-chip--gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+  box-shadow: 0 0 0 3px rgb(17 26 58 / 0.18);
+}
+
+.num-chip {
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: 0 0 0 3px rgb(255 197 61 / 0.35);
+  font-family: var(--display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* sponsor tiers: edges (and prices) keyed to the ribbon names */
+.tier { border-top: 5px solid var(--line); }
+
+.tier--patriot { border-top-color: var(--navy); }
+
+.tier--white { border-top-color: #e6e0cd; }
+
+.tier--red { border-top-color: var(--red); }
+
+.tier--blue { border-top-color: #2f4d9e; }
+
+.tier--blue .tier-price { color: #2f4d9e; }
+
+.tier--presenting { border-top-color: var(--gold); }
+
+.tier--presenting .tier-price { color: #8a6400; }
+
+.tier--premier {
+  border-top-color: transparent;
+  border-image: repeating-linear-gradient(-45deg,
+    var(--gold) 0 10px, var(--red) 10px 20px) 1;
+}
+
+.tier--white .tier-price { color: var(--muted); }
+
+.tier--patriot .tier-price { color: var(--navy); }
