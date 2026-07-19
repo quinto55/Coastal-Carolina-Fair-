@@ -1629,10 +1629,11 @@ h3,
 }
 
 /* ==========================================================================
-   v7.5 — Tighter gate-hours booth: narrower frame, bigger type
+   v7.5 — Tighter gate-hours booth: narrower frame, bigger type, centered
    ========================================================================== */
 .booth {
   max-width: 50rem;
+  margin-inline: auto;
 }
 
 .booth table {
