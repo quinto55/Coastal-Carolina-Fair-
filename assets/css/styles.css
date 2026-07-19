@@ -1898,3 +1898,58 @@ h3,
   .tile .label,
   .tile .label::after { transition: none; }
 }
+
+/* ==========================================================================
+   v9.1 — Category identity for the events "fair week" cards
+   ========================================================================== */
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.cat-badge svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.cat-badge--shows {
+  background: rgb(17 26 58 / 0.08);
+  color: var(--navy);
+}
+
+.cat-badge--competitions {
+  background: rgb(213 56 44 / 0.1);
+  color: var(--red);
+}
+
+.cat-badge--demos {
+  background: rgb(255 197 61 / 0.22);
+  color: #7a5800;
+}
+
+.cat-badge--community {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--muted);
+}
+
+/* colored top edge keys each card to its filter */
+.card[data-cat] { border-top: 4px solid var(--line); }
+
+.card[data-cat="shows"] { border-top-color: var(--navy); }
+
+.card[data-cat="competitions"] { border-top-color: var(--red); }
+
+.card[data-cat="demos"] { border-top-color: var(--gold); }
+
+.card[data-cat="community"] { border-top-color: #9aa0bd; }
