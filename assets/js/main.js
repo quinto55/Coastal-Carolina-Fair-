@@ -105,6 +105,20 @@ if (chipRow) {
   });
 }
 
+/* ---------- Ticket-card anatomy: serial + perforation divider ----------
+   Serials continue the EMC ticket series (047295–047310) from 047311. */
+const serialBase = parseInt(document.body.dataset.serial || "47311", 10);
+$$(".tik").forEach((card, i) => {
+  const punch = document.createElement("div");
+  punch.className = "punchline";
+  punch.setAttribute("aria-hidden", "true");
+  const serial = document.createElement("span");
+  serial.className = "serial";
+  serial.setAttribute("aria-hidden", "true");
+  serial.textContent = "№ 0" + (serialBase + i);
+  card.append(punch, serial);
+});
+
 /* ---------- Reveal on scroll ---------- */
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(

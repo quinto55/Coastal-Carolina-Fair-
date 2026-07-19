@@ -57,8 +57,72 @@
 { "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }] }
 </script>
 </head>
-<body>
+<body data-page="home" data-serial="47311">
 <a class="skip" href="#main">Skip to content</a>
+
+<!-- Day-to-night sky: scrubbed by scroll on this page -->
+<div class="sky" aria-hidden="true">
+  <div class="sky-layer sky-dusk"></div>
+  <div class="sky-layer sky-evening"></div>
+  <div class="sky-layer sky-night"></div>
+  <div class="sky-stars"></div>
+  <div class="sky-sun"></div>
+  <div class="sky-moon"></div>
+</div>
+
+<!-- Midway skyline on the horizon -->
+<div class="skyline" aria-hidden="true">
+  <svg viewBox="0 0 1600 190" preserveAspectRatio="xMidYMax slice">
+    <g class="silhouette">
+      <rect x="0" y="176" width="1600" height="14"/>
+      <!-- trees -->
+      <path d="M40 178c-18 0-26-12-18-24 6-10 4-18 10-24 5-6 16-6 21 0 6 6 4 14 10 24 8 12 0 24-23 24z"/>
+      <path d="M1548 178c-18 0-26-12-18-24 6-10 4-18 10-24 5-6 16-6 21 0 6 6 4 14 10 24 8 12 0 24-23 24z"/>
+      <!-- big tent -->
+      <path d="M120 178l70-64 70 64z"/>
+      <rect x="188" y="98" width="4" height="20"/>
+      <path d="M190 98l16 6-16 6z"/>
+      <!-- light poles -->
+      <rect x="330" y="120" width="5" height="58"/>
+      <rect x="540" y="120" width="5" height="58"/>
+      <!-- carousel -->
+      <path d="M880 178v-34h120v34zM872 144l68-30 68 30z"/>
+      <rect x="938" y="96" width="4" height="18"/>
+      <path d="M940 96l14 5-14 5z"/>
+      <!-- coaster hump -->
+      <path d="M1080 178c40-90 120-90 160 0h-14c-34-74-98-74-132 0z"/>
+      <rect x="1108" y="140" width="4" height="38"/>
+      <rect x="1158" y="118" width="4" height="60"/>
+      <rect x="1208" y="140" width="4" height="38"/>
+      <!-- drop tower -->
+      <rect x="1396" y="60" width="10" height="118"/>
+      <rect x="1384" y="70" width="34" height="12" rx="4"/>
+      <!-- small tents -->
+      <path d="M1440 178l38-34 38 34z"/>
+    </g>
+    <g class="sil-stroke" fill="none" stroke-width="5">
+      <!-- skyline wheel -->
+      <circle cx="700" cy="106" r="66"/>
+      <path d="M700 40v132M634 106h132M654 60l92 92M746 60l-92 92"/>
+      <path d="M700 106 664 178M700 106l36 72"/>
+      <!-- string lights swag -->
+      <path d="M335 124c60 34 145 34 207 0" stroke-width="3"/>
+    </g>
+    <g class="skyline-bulb">
+      <circle cx="700" cy="40" r="4"/><circle cx="766" cy="106" r="4"/>
+      <circle cx="700" cy="172" r="4"/><circle cx="634" cy="106" r="4"/>
+      <circle cx="654" cy="60" r="4"/><circle cx="746" cy="60" r="4"/>
+      <circle cx="654" cy="152" r="4"/><circle cx="746" cy="152" r="4"/>
+      <circle cx="368" cy="136" r="3"/><circle cx="404" cy="145" r="3"/>
+      <circle cx="438" cy="148" r="3"/><circle cx="472" cy="145" r="3"/>
+      <circle cx="508" cy="136" r="3"/>
+      <circle cx="1401" cy="66" r="4"/>
+      <circle cx="940" cy="92" r="3"/>
+    </g>
+  </svg>
+</div>
+
+<canvas id="fireflies" aria-hidden="true"></canvas>
 
 <header class="site-head">
   <div class="wrap">
@@ -88,9 +152,9 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Ladson, SC · Every fall since 1957</p>
+        <p class="hero-badge">★ Ladson, SC · Every fall since 1957</p>
         <p class="date-lockup">Oct 29 – Nov 8, 2026</p>
-        <h1 id="hero-title">Eleven nights <span class="accent">under the lights</span></h1>
+        <h1 id="hero-title"><span class="mask-line"><span>Eleven nights</span></span><span class="mask-line"><span class="accent">under the lights</span></span></h1>
         <p class="lede">Rides, fair food, free shows with admission — and every ticket goes back to the Lowcountry. That’s the Coastal Carolina Fair.</p>
         <div class="hero-ctas">
           <a class="btn-ticket" href="tickets.html">Get tickets</a>
@@ -188,14 +252,23 @@
           <path d="M0 540h520" stroke="#39406e" stroke-width="4"/>
         </svg>
       </div>
+      <p class="scroll-cue">Scroll — the sun sets</p>
     </div>
   </section>
+
+  <!-- ============ Announcement ribbon ============ -->
+  <div class="ribbon" role="marquee" aria-label="Announcements">
+    <div class="ribbon-track">
+      <span>Oct 29 – Nov 8, 2026 <span class="star">★</span> Exchange Park, Ladson <span class="star">★</span> 2026 lineup lands late summer <span class="star">★</span> Tickets on sale soon <span class="star">★</span> All shows free with admission <span class="star">★</span> Every ticket gives back</span>
+      <span aria-hidden="true">Oct 29 – Nov 8, 2026 <span class="star">★</span> Exchange Park, Ladson <span class="star">★</span> 2026 lineup lands late summer <span class="star">★</span> Tickets on sale soon <span class="star">★</span> All shows free with admission <span class="star">★</span> Every ticket gives back</span>
+    </div>
+  </div>
 
   <!-- ============ Calendar rail ============ -->
   <section aria-labelledby="cal-title">
     <div class="wrap">
       <p class="eyebrow">The 2026 run</p>
-      <h2 id="cal-title">Eleven days, one big midway</h2>
+      <div class="sign"><h2 id="cal-title">Eleven days, one big midway</h2></div>
       <p class="muted">Typical gate hours shown — the confirmed 2026 schedule and daily deals land closer to opening day. <a href="plan.html">See full hours &amp; directions</a>.</p>
     </div>
     <div class="rail-scroller" tabindex="0" role="region" aria-label="Fair days, October 29 through November 8, 2026">
@@ -221,22 +294,22 @@
       <p class="eyebrow">What’s waiting inside the gates</p>
       <h2 id="high-title">Built for a full day of fun</h2>
       <ul class="card-grid">
-        <li class="card reveal">
+        <li class="card tik reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="11" r="7"/><path d="M12 4v14M5 11h14M7 6.5l10 9M17 6.5l-10 9"/></svg>
           <h3>Rides &amp; midway</h3>
           <p>A full midway of rides and games for every age and every level of bravery, from kiddie coasters to the big spinners.</p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 21c3-6 1-9-1-11 5 0 7 3 7 7 0 0 4-2 3-7 3 3 4 7 2 10-1.7 2.4-7.3 3.4-11 1z"/></svg>
           <h3>Fair food</h3>
           <p>Funnel cakes, corn dogs, cotton candy, and the once-a-year favorites you plan the whole visit around.</p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
           <h3>Free shows &amp; music</h3>
           <p>Every show is free with gate admission — headline acts, strolling performers, and the Parkway Stage.</p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l2.5 5.1 5.5.8-4 3.9.9 5.6-4.9-2.6-4.9 2.6.9-5.6-4-3.9 5.5-.8z"/></svg>
           <h3>Competitions &amp; exhibits</h3>
           <p>Livestock, crafts, baking, and live demonstrations — the classic fair traditions, judged and on display all week.</p>
@@ -249,7 +322,7 @@
   <section class="panel-dusk" aria-labelledby="give-title">
     <div class="wrap">
       <p class="eyebrow">Why this fair exists</p>
-      <h2 id="give-title">Every ticket gives back</h2>
+      <div class="sign"><h2 id="give-title">Every ticket gives back</h2></div>
       <p class="lede">The fair is owned and run by the Exchange Club of Charleston, a nonprofit. When the lights go down, the proceeds go out — to local charities, schools, and students across the Lowcountry.</p>
       <div class="stat-row">
         <p class="stat reveal"><b>$504K+</b><span>granted to 90+ local nonprofits and students after the latest fair</span></p>
@@ -263,13 +336,13 @@
   <section aria-labelledby="deals-title">
     <div class="wrap">
       <p class="eyebrow">Ways to save</p>
-      <h2 id="deals-title">Deal days worth planning around</h2>
+      <div class="sign"><h2 id="deals-title">Deal days worth planning around</h2></div>
       <p class="muted">How deal days ran in 2025 — the 2026 lineup is announced closer to opening.</p>
       <ul class="card-grid">
-        <li class="card reveal"><h3>Bring-a-friend Thursdays</h3><p>Buy one Circle K admission ticket and a friend walks in free at the gate.</p></li>
-        <li class="card reveal"><h3>Heroes Fridays</h3><p>Free admission plus one guest for military, veterans, and first responders with valid ID.</p></li>
-        <li class="card reveal"><h3>2-fer Tuesday</h3><p>Buy one ride wristband at the gate or midway booth, get a second one free.</p></li>
-        <li class="card reveal"><h3>Senior Day</h3><p>$5 admission for guests 55+, one free caregiver admission each, with morning programming.</p></li>
+        <li class="card tik reveal"><h3>Bring-a-friend Thursdays</h3><p>Buy one Circle K admission ticket and a friend walks in free at the gate.</p></li>
+        <li class="card tik reveal"><h3>Heroes Fridays</h3><p>Free admission plus one guest for military, veterans, and first responders with valid ID.</p></li>
+        <li class="card tik reveal"><h3>2-fer Tuesday</h3><p>Buy one ride wristband at the gate or midway booth, get a second one free.</p></li>
+        <li class="card tik reveal"><h3>Senior Day</h3><p>$5 admission for guests 55+, one free caregiver admission each, with morning programming.</p></li>
       </ul>
       <p style="margin-top: var(--space-3)"><a class="btn-ticket" href="tickets.html">See all tickets &amp; deals</a></p>
     </div>
@@ -333,5 +406,8 @@
 </footer>
 
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>

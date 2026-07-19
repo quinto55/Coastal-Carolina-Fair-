@@ -32,8 +32,72 @@
 { "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }] }
 </script>
 </head>
-<body>
+<body data-serial="47334">
 <a class="skip" href="#main">Skip to content</a>
+
+<!-- Static evening sky -->
+<div class="sky sky--static" aria-hidden="true">
+  <div class="sky-layer sky-dusk"></div>
+  <div class="sky-layer sky-evening"></div>
+  <div class="sky-layer sky-night"></div>
+  <div class="sky-stars"></div>
+  <div class="sky-sun"></div>
+  <div class="sky-moon"></div>
+</div>
+
+<!-- Midway skyline on the horizon -->
+<div class="skyline skyline--static" aria-hidden="true">
+  <svg viewBox="0 0 1600 190" preserveAspectRatio="xMidYMax slice">
+    <g class="silhouette">
+      <rect x="0" y="176" width="1600" height="14"/>
+      <!-- trees -->
+      <path d="M40 178c-18 0-26-12-18-24 6-10 4-18 10-24 5-6 16-6 21 0 6 6 4 14 10 24 8 12 0 24-23 24z"/>
+      <path d="M1548 178c-18 0-26-12-18-24 6-10 4-18 10-24 5-6 16-6 21 0 6 6 4 14 10 24 8 12 0 24-23 24z"/>
+      <!-- big tent -->
+      <path d="M120 178l70-64 70 64z"/>
+      <rect x="188" y="98" width="4" height="20"/>
+      <path d="M190 98l16 6-16 6z"/>
+      <!-- light poles -->
+      <rect x="330" y="120" width="5" height="58"/>
+      <rect x="540" y="120" width="5" height="58"/>
+      <!-- carousel -->
+      <path d="M880 178v-34h120v34zM872 144l68-30 68 30z"/>
+      <rect x="938" y="96" width="4" height="18"/>
+      <path d="M940 96l14 5-14 5z"/>
+      <!-- coaster hump -->
+      <path d="M1080 178c40-90 120-90 160 0h-14c-34-74-98-74-132 0z"/>
+      <rect x="1108" y="140" width="4" height="38"/>
+      <rect x="1158" y="118" width="4" height="60"/>
+      <rect x="1208" y="140" width="4" height="38"/>
+      <!-- drop tower -->
+      <rect x="1396" y="60" width="10" height="118"/>
+      <rect x="1384" y="70" width="34" height="12" rx="4"/>
+      <!-- small tents -->
+      <path d="M1440 178l38-34 38 34z"/>
+    </g>
+    <g class="sil-stroke" fill="none" stroke-width="5">
+      <!-- skyline wheel -->
+      <circle cx="700" cy="106" r="66"/>
+      <path d="M700 40v132M634 106h132M654 60l92 92M746 60l-92 92"/>
+      <path d="M700 106 664 178M700 106l36 72"/>
+      <!-- string lights swag -->
+      <path d="M335 124c60 34 145 34 207 0" stroke-width="3"/>
+    </g>
+    <g class="skyline-bulb">
+      <circle cx="700" cy="40" r="4"/><circle cx="766" cy="106" r="4"/>
+      <circle cx="700" cy="172" r="4"/><circle cx="634" cy="106" r="4"/>
+      <circle cx="654" cy="60" r="4"/><circle cx="746" cy="60" r="4"/>
+      <circle cx="654" cy="152" r="4"/><circle cx="746" cy="152" r="4"/>
+      <circle cx="368" cy="136" r="3"/><circle cx="404" cy="145" r="3"/>
+      <circle cx="438" cy="148" r="3"/><circle cx="472" cy="145" r="3"/>
+      <circle cx="508" cy="136" r="3"/>
+      <circle cx="1401" cy="66" r="4"/>
+      <circle cx="940" cy="92" r="3"/>
+    </g>
+  </svg>
+</div>
+
+<canvas id="fireflies" aria-hidden="true"></canvas>
 
 <header class="site-head">
   <div class="wrap">
@@ -70,27 +134,27 @@
     <div class="wrap">
       <h2 id="ways-title">Five ways in</h2>
       <ul class="card-grid">
-        <li class="card reveal">
+        <li class="card tik reveal">
           <h3>Become a vendor</h3>
           <p>Food and merchandise vendor applications are open. Food prepared on-site requires the outdoor application under Health Department rules; pre-packaged items may qualify for indoor spots with chairman approval.</p>
           <p><a href="https://www.coastalcarolinafair.org/p/getinvolved/vendors1">Apply on the official site →</a></p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <h3>Volunteer</h3>
           <p>Exchange Club members and community volunteers staff the gates, exhibits, and grounds — it’s the engine of the whole operation.</p>
           <p><a href="https://www.coastalcarolinafair.org/p/getinvolved/volunteers">Volunteer info →</a></p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <h3>Perform on the Parkway Stage</h3>
           <p>School groups, bands, dancers, and local acts play daily slots throughout the fair. If you’ve got a show, there’s a stage.</p>
           <p><a href="https://www.coastalcarolinafair.org/p/getinvolved/parkway-stage-performers">Performer application →</a></p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <h3>Enter a competition</h3>
           <p>Livestock, baking, canning, quilts, art, photography — bring your best and take home a ribbon. Categories and entry windows post before the fair.</p>
           <p><a href="https://www.coastalcarolinafair.org/events/competitions">Competition details →</a></p>
         </li>
-        <li class="card reveal">
+        <li class="card tik reveal">
           <h3>Apply for a grant</h3>
           <p>The Exchange Club of Charleston Foundation grants fair proceeds to Lowcountry nonprofits and students — $504,212 went to more than 90 recipients after a recent season.</p>
           <p><a href="https://www.coastalcarolinafair.org/p/getinvolved/grants1">Grant information →</a></p>
@@ -154,5 +218,8 @@
 </footer>
 
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>
