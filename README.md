@@ -5,8 +5,15 @@ built as a technology demonstration for the fair. Same organization, same facts 
 rebuilt as a fast, accessible, zero-dependency static site.
 
 **This is an unofficial redesign concept.** All copy is original writing; factual
-details (dates, address, policies, deals, history) were sourced from the official
-site on 2026-07-18. Ticket/vendor application links point back to the official site.
+details (dates, address, policies, deals, pricing, lineup history) were sourced from
+the official site on 2026-07-18. Ticket/vendor application links point back to the
+official site.
+
+**Photography:** images are hotlinked directly from the fair's own CDN
+(`cdn.saffire.com`) — no copies are stored in this repository. They remain the
+property of the Coastal Carolina Fair and their respective photographers/providers,
+and are displayed here only as part of this redesign concept for the fair's review.
+If the design is adopted, the fair supplies and hosts its own assets.
 
 ## What's inside
 

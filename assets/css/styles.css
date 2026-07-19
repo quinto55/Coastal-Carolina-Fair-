@@ -1219,3 +1219,176 @@ body[data-page="home"] section {
     translate: none;
   }
 }
+
+/* ==========================================================================
+   v3 — Real photography layer + full content capture
+   ========================================================================== */
+
+/* ---------- Photo cards ---------- */
+.photo-card {
+  padding: 0;
+  overflow: clip;
+}
+
+.photo-card .img-frame {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid rgb(255 255 255 / 0.12);
+}
+
+.photo-card .body {
+  padding: var(--space-3);
+}
+
+.photo-card .body :last-child { margin-bottom: 0; }
+
+.img-frame {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.img-frame img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+/* dusk wash keeps photos in the night palette */
+.img-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(17 26 58 / 0.08) 0%, rgb(10 15 36 / 0.38) 100%);
+  pointer-events: none;
+}
+
+/* ---------- Entertainer cards ---------- */
+.ent-card {
+  padding: 0;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+}
+
+.ent-card .img-frame img { aspect-ratio: 4 / 3; }
+
+.ent-card .body {
+  padding: var(--space-2) var(--space-3) var(--space-3);
+}
+
+.ent-card h3 { margin-bottom: 0.35rem; }
+
+.ent-card .body p { margin-bottom: 0; }
+
+.when-chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--night);
+  background: var(--gold);
+  border-radius: 999px;
+  padding: 0.22rem 0.7rem;
+  margin-bottom: 0.6rem;
+}
+
+/* stage placeholder when no promo photo exists */
+.stage-ph {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(320px 160px at 50% 115%, rgb(255 197 61 / 0.35), transparent 70%),
+    linear-gradient(180deg, #171f45 0%, #0c1130 100%);
+  border-bottom: 2px solid rgb(255 255 255 / 0.12);
+}
+
+.stage-ph svg {
+  width: 64px;
+  height: 64px;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* ---------- Photo gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.gallery .img-frame {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+
+.gallery .img-frame img { aspect-ratio: 1; }
+
+.gallery .img-frame.wide { grid-column: span 2; }
+
+.gallery .img-frame.wide img { aspect-ratio: 2 / 1; }
+
+.gallery figcaption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  background: linear-gradient(180deg, transparent, rgb(5 8 28 / 0.85));
+}
+
+@media (max-width: 760px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Sponsor tiers ---------- */
+.tier-price {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  color: var(--gold);
+  display: block;
+  line-height: 1.1;
+}
+
+.tier-soldout {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  background: var(--red);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+}
+
+.check-list li {
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+  font-size: var(--step--1);
+}
+
+.check-list li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
