@@ -1211,3 +1211,23 @@ section.soft { background: rgb(255 255 255 / 0.55); }
 @media (prefers-reduced-motion: reduce) {
   .clouds { animation: none !important; }
 }
+
+/* ==========================================================================
+   v6.1 — Official branding (logo hotlinked from the fair's CDN)
+   ========================================================================== */
+.brand img {
+  height: 56px;
+  width: auto;
+}
+
+.foot-logo {
+  height: 96px;
+  width: auto;
+  margin-bottom: 0.6rem;
+}
+
+.opener-logo {
+  height: clamp(76px, 10vw, 120px);
+  width: auto;
+  margin-bottom: 0.9rem;
+}

@@ -9,11 +9,13 @@ details (dates, address, policies, deals, pricing, lineup history) were sourced 
 the official site on 2026-07-18. Ticket/vendor application links point back to the
 official site.
 
-**Photography:** images are hotlinked directly from the fair's own CDN
-(`cdn.saffire.com`) — no copies are stored in this repository. They remain the
-property of the Coastal Carolina Fair and their respective photographers/providers,
-and are displayed here only as part of this redesign concept for the fair's review.
-If the design is adopted, the fair supplies and hosts its own assets.
+**Photography & branding:** images and the official Coastal Carolina Fair logo are
+hotlinked directly from the fair's own CDN (`cdn.saffire.com`) — no copies are
+stored in this repository. All trademarks, logos, and photographs remain the
+property of the Coastal Carolina Fair / Exchange Club of Charleston and their
+respective providers, and are displayed here only as part of this redesign concept
+prepared for the fair's review. If the design is adopted, the fair supplies and
+hosts its own assets.
 
 ## What's inside
 
