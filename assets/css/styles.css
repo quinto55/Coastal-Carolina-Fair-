@@ -1829,9 +1829,14 @@ h3,
   height: 44px;
   border-radius: 50%;
   background: var(--gold);
-  color: var(--navy-deep);
   display: grid;
   place-items: center;
+}
+
+/* outrank the generic strip-text color that was washing the icons out */
+.info-strip .item .info-icon,
+.info-strip .item .info-icon svg {
+  color: var(--navy-deep);
 }
 
 .info-icon svg { width: 22px; height: 22px; }
