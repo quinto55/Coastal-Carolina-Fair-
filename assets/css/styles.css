@@ -2081,10 +2081,7 @@ h3,
    ========================================================================== */
 .outlet-logo {
   display: inline-block;
-  height: 56px;
+  height: 88px;
   width: auto;
-  background: #fff;
-  padding: 7px 11px;
-  border-radius: 8px;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
