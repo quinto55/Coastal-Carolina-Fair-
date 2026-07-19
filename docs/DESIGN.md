@@ -60,8 +60,9 @@ Dark scheme swaps cream canvas for dusk surfaces; both meet WCAG AA.
   AA contrast, reduced-motion respected, keyboard-complete.
 - No trackers of any kind.
 - Print stylesheet for plan/schedule pages.
-- Data single-source: fair dates/hours/deals live in one JS object (`fair-data.js`)
-  rendered progressively — HTML fallback content baked in for no-JS.
+- Data single-source: fair dates live in the `FAIR_DATA` object at the top of
+  `main.js`; the HTML carries the same content statically so nothing breaks
+  without JavaScript.
 
 ## Content facts (sourced from live site, 2026-07-18)
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quinto55.github.io/Coastal-Carolina-Fair-/sitemap.xml
