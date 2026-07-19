@@ -2075,3 +2075,16 @@ h3,
   white-space: nowrap;
   font-size: clamp(1.3rem, 12cqw, 2.6rem);
 }
+
+/* ==========================================================================
+   v9.6 — Circle K partner logo in the official-outlets band
+   ========================================================================== */
+.outlet-logo {
+  display: inline-block;
+  height: 56px;
+  width: auto;
+  background: #fff;
+  padding: 7px 11px;
+  border-radius: 8px;
+  margin-bottom: 0.4rem;
+}

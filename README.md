@@ -14,8 +14,10 @@ hotlinked directly from the fair's own CDN (`cdn.saffire.com`) — no copies are
 stored in this repository. All trademarks, logos, and photographs remain the
 property of the Coastal Carolina Fair / Exchange Club of Charleston and their
 respective providers, and are displayed here only as part of this redesign concept
-prepared for the fair's review. If the design is adopted, the fair supplies and
-hosts its own assets.
+prepared for the fair's review. The Circle K mark identifies the fair's actual
+official ticket outlet and remains the property of Circle K Stores Inc. If the
+design is adopted, the fair supplies and hosts its own assets and confirms
+partner-mark usage.
 
 ## What's inside
 
