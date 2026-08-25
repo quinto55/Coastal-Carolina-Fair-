@@ -24,15 +24,23 @@ Not linked from the site nav; shareable directly at
   | 5 | DJI_0460 | 2.0–12.0s (60→30fps) | Rodeo arena |
   | 6 | DJI_0458 | 0.0–10.0s | Finale skyline |
 
-- Four **bridges** (`b12`, `b34`, `b45`, `b56`) are 6s LTX-2.5 generations
+- Four **bridges** (`b12`, `b34`, `b45`, `b56`) are LTX-2.5 generations
   (`lightricks/ltx-2.5/image-to-video/fast` on fal, 1080p/24fps) conditioned on
   the *actual last frame* of one leg (`image_url`) and *actual first frame* of
   the next (`end_image_url`), so every seam is frame-locked. Legs 2→3 need no
   bridge — they're consecutive frames of one continuous take (`connectors[1] =
   null`).
+- Bridges are **immersive FPV moves** (EMC drone-flight style), not high
+  repositioning hops: b12 (10s) dives down *into* the midway between the ride
+  towers; b34 (8s) skims low along the food-stall canopies; b45 (8s) races
+  low across the fairground past tents and trailers; b56 (10s) arcs *around*
+  the ferris wheel — spokes passing close — before pulling away to the finale
+  skyline. `connScroll: 0.95` gives them scroll room.
 - Bridge prompts must include: *"The view changes only through the camera's own
   continuous flight — no dissolve, no fade, no morphing"* — without it LTX
-  cross-dissolves between distant endpoints instead of flying.
+  cross-dissolves between distant endpoints instead of flying. Describe the
+  intermediate content concretely (what sweeps beneath/beside the camera) to
+  steer the flight path.
 
 ## Regenerating
 
