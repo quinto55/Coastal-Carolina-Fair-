@@ -58,3 +58,13 @@ Not linked from the site nav; shareable directly at
 
 Preview locally: `python3 -m http.server` in this folder (blob loading makes
 scrubbing work even without byte-range support).
+
+## The film (`fly-the-fair.mp4`)
+
+Standalone 96s hit-play version of the same flight (1080p24, AAC score). Not
+referenced by any page — the site is unchanged. Assembly: the ten clips
+concatenated at 24fps, 1s fade-in / 1.2s fade-out, title + end cards rendered
+with PIL in Alfa Slab One (`card_title.png` / `card_end.png` overlays with
+alpha fades), and an instrumental score generated with MiniMax Music 3 on fal
+(~79s Americana folk take, splice-extended to 96s with a 3s acrossfade at
+0:52→0:32 — verified inaudible), loudnorm -16 LUFS, 1.5s/4s audio fades.
