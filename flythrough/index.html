@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fly the Fair — Coastal Carolina Fair 2026</title>
+  <meta name="description" content="Scroll to fly a drone over the Coastal Carolina Fair — Oct 29 – Nov 8, 2026 at Exchange Park, Ladson, SC." />
+  <style>
+    @font-face {
+      font-family: "Alfa Slab One";
+      src: url("assets/fonts/alfa-slab-one-latin.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    /* Night-sky theme pulled from the fair site's palette */
+    :root, .sw-root {
+      --sw-bg: #0a0f24;           /* navy-deep — matches the night footage */
+      --sw-ink: #faf4e6;          /* cream */
+      --sw-ink-soft: #b8b29e;
+      --sw-accent: #ffc53d;       /* gold */
+      --sw-font-display: "Alfa Slab One", "Rockwell", "Arial Black", sans-serif;
+      --sw-font-body: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    html, body { background: #0a0f24; }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="assets/scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Coastal Carolina Fair', href: '#top' },
+      hint: 'scroll to take off',
+      diveScroll: 1.25,
+      connScroll: 0.55,       // bridges are quick transits
+      sections: [
+        {
+          id: 'arrival', label: 'The Fair',
+          still: 'assets/img/leg1.jpg',
+          clip: 'assets/vid/leg1.mp4',
+          accent: '#ffc53d',
+          scroll: 1.5, linger: 0.4,
+          eyebrow: 'Oct 29 – Nov 8, 2026 · Exchange Park, Ladson, SC',
+          title: 'Eleven nights under the lights.',
+          body: 'The Lowcountry’s biggest week glows just off Highway 78 — and tonight, you’re flying over it.',
+          tags: ['Rides', 'Fair food', 'Rodeo'],
+        },
+        {
+          id: 'midway', label: 'The Midway',
+          still: 'assets/img/leg2.jpg',
+          clip: 'assets/vid/leg2.mp4',
+          accent: '#ffdd85',
+          eyebrow: 'The Midway',
+          title: 'Every ride. All night.',
+          body: 'Two ferris wheels, a runway of neon, and a carousel spinning far below you.',
+        },
+        {
+          id: 'food', label: 'Games & Food',
+          still: 'assets/img/leg3.jpg',
+          clip: 'assets/vid/leg3.mp4',
+          accent: '#ffdd85',
+          eyebrow: 'Games & fair food',
+          title: 'Win big. Eat bigger.',
+          body: 'Funnel cakes, corn dogs, and a row of games glowing right beneath the drone.',
+        },
+        {
+          id: 'lagoon', label: 'After Dark',
+          still: 'assets/img/leg4.jpg',
+          clip: 'assets/vid/leg4.mp4',
+          accent: '#ffc53d',
+          linger: 0.35,
+          eyebrow: 'After dark',
+          title: 'Neon on the lagoon.',
+          body: 'Ride lights spill across the water while the midway hums below.',
+        },
+        {
+          id: 'rodeo', label: 'Rodeo',
+          still: 'assets/img/leg5.jpg',
+          clip: 'assets/vid/leg5.mp4',
+          accent: '#ff8a7a',
+          eyebrow: 'Rodeo nights',
+          title: 'Boots, barrels & bulls.',
+          body: 'A packed arena under the lights, with the whole fair blazing behind it.',
+        },
+        {
+          id: 'finale', label: 'Get Tickets',
+          still: 'assets/img/leg6.jpg',
+          clip: 'assets/vid/leg6.mp4',
+          accent: '#ffc53d',
+          scroll: 1.5, linger: 0.4,
+          eyebrow: 'Oct 29 – Nov 8, 2026',
+          title: 'See you under the lights.',
+          body: 'Eleven nights. One fair. Get your tickets before the wheel stops turning.',
+          cta: {
+            primary: { label: 'Get Tickets', href: 'https://quinto55.github.io/Coastal-Carolina-Fair-/tickets.html' },
+            secondary: { label: 'Plan your visit', href: 'https://quinto55.github.io/Coastal-Carolina-Fair-/plan.html' },
+          },
+        },
+      ],
+      connectors: [
+        'assets/vid/b12.mp4',
+        null,                    // legs 2→3 are one continuous real take — no bridge needed
+        'assets/vid/b34.mp4',
+        'assets/vid/b45.mp4',
+        'assets/vid/b56.mp4',
+      ],
+    });
+  </script>
+</body>
+</html>
