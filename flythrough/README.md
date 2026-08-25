@@ -41,6 +41,12 @@ Not linked from the site nav; shareable directly at
   cross-dissolves between distant endpoints instead of flying. Describe the
   intermediate content concretely (what sweeps beneath/beside the camera) to
   steer the flight path.
+- b12, b45 and b56 are rendered on the **`/pro`** endpoint: the fast tier melts
+  the ferris wheel's spoke geometry on close passes; pro keeps structures solid
+  (keep the wheel at a middle distance and ask for "crisp, clean straight
+  geometry"). b45's prompt ends with a slow, nearly stationary hover so the
+  camera's velocity matches the real rodeo footage at the seam; `crossfade:
+  0.18` widens the seam dissolve.
 
 ## Regenerating
 
