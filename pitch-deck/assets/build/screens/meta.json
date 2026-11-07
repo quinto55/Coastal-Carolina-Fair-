@@ -1,0 +1,9 @@
+{
+ "planner-screen": {
+  "w": 2560,
+  "h": 1600,
+  "side": 90,
+  "top": 90,
+  "bottom": 130
+ }
+}

@@ -70,7 +70,7 @@ Dark scheme swaps cream canvas for dusk surfaces; both meet WCAG AA.
 - Run by the Exchange Club of Charleston since 1957; site at Ladson since 1979
   (180+ acres, parking for 10,000+ cars). Fairs in Charleston trace to 1922.
 - Giving back: $504,000+ granted to 90+ local nonprofits/students after the latest
-  fair; 15,000+ volunteer hours (2023); $11M+ returned to the Lowcountry since 2003.
+  fair; 15,000+ member volunteer hours (2023); $11M+ returned to the Lowcountry since 2003.
 - 2025 deals (labeled as prior season): Circle K bring-a-friend Thursdays; Military &
   First Responders free Fridays (+1 guest, ID); 2-fer Tuesday wristbands; Senior Day
   Wed $5 (55+, free caregiver admission, programming 10am–2pm).
